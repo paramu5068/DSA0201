@@ -1,0 +1,41 @@
+1. Perform basic Image Handling and processing operations on the image.
+• Read an image in python and Convert an Image to Grayscale
+
+STEPS:
+1. Install necessary libraries:
+!pip install opencv-python-headless matplotlib
+
+2. Upload an image to Colab:
+from google.colab import files
+uploaded = files.upload()
+
+3. Read the image:
+Once the image is uploaded, you can read it using OpenCV (cv2) or PIL (Pillow). Here’s how you do it with OpenCV:
+
+import cv2
+import matplotlib.pyplot as plt
+# Load the image
+image_path = next(iter(uploaded))  # Get the uploaded image name
+image = cv2.imread(image_path)
+# OpenCV loads images in BGR format, so convert to RGB for displaying
+image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+# Display the original image
+plt.imshow(image_rgb)
+plt.axis('off')
+plt.show()
+
+4. Convert the image to Grayscale:
+To convert the image to grayscale, you can use OpenCV’s cvtColor function:
+
+# Convert the image to grayscale
+image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+# Display the grayscale image
+plt.imshow(image_gray, cmap='gray')
+plt.axis('off')
+plt.show()
+
+5. Optional: Save the grayscale image (if needed):
+You can save the grayscale image using OpenCV as well:
+
+cv2.imwrite('grayscale_image.jpg', image_gray)
+
